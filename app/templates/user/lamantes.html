@@ -1,0 +1,134 @@
+{% extends "user/dasar.html" %} {% block title %} Laman Tes | Tes Psikologi DISC {% endblock %} {% block content %}
+
+    <!-- Jumbotron 1 -->
+    <section class="jumbotron text-black">
+
+        <div class="container container-judul">
+            <h1 class="display-4">Tes Kepribadian DISC</h1>
+            <p class="lh-sm mb-5">Cari tahu tipe kepribadianmu berdasarkan 4 tipe kepribadian DISC</p>
+        </div>
+
+        <!-- Panduan Tambahan -->
+        <div class="container container-panduan">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <img src="{{ url_for('static', filename='img/pilih.png') }}" alt="logo_tes1" width="70" />
+                    <p> Pilih satu dari empat opsi disetiap masing-masing paling dan kurang. </p>
+                </div>
+                <div class="col-4">
+                    <img src="{{ url_for('static', filename='img/personality.png') }}" alt="logo_test2" width="70" />
+                    <p> Pilihlah salah satu opsi yang paling menggambarkan tentang diri anda. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5 text-center">
+            <p class="fw-bolder">PERHATIKAN : TIDAK diperbolehkan memilih PALING dan KURANG dengan penyataan yang sama.</p>
+        </div>
+
+        <div class="container mt-5 text-center">
+            <p class="fw-bolder">Pastikan diri anda sedang tenang agar mendapatkan hasil yang optimal.</p>
+        </div>
+
+        <div class="container mt-3 text-center">
+            {% with messages=get_flashed_messages(with_categories=true) %}
+                {% if messages %} 
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                        <button class="close" type="button" data-dismiss="alert">
+                        <span class="text-black" aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    {% endfor %} 
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <!-- Soal -->
+        <div class="container bg-white">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-user table-soal mt-3">
+                        <tbody>
+                            {% for data in data %}
+                                <thead>
+                                    <tr class="bg-primary text-white">
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Pernyataan</th>
+                                        <th>Paling</th>
+                                        <th>Kurang</th>
+                                    </tr>
+                                </thead>
+                                <form action="{{ url_for('hasiltes') }}" method="POST" autocomplete="">
+                                    <tr>
+                                        <th rowspan="4" class="text-center">{{loop.index0+1}}</th>
+                                        <th>{{data.pernyataan_a}}</th>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="style-radio" type="radio" name="m[{{data.id_soal}}]" value="{{data.m_a}}">
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="style-radio" type="radio" name="l[{{data.id_soal}}]" value="{{data.l_a}}">
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>{{data.pernyataan_b}}</th>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="style-radio" type="radio" name="m[{{data.id_soal}}]" value="{{data.m_b}}">
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="style-radio" type="radio" name="l[{{data.id_soal}}]" value="{{data.l_b}}">
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>{{data.pernyataan_c}}</th>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="style-radio" type="radio" name="m[{{data.id_soal}}]" value="{{data.m_c}}">
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="style-radio" type="radio" name="l[{{data.id_soal}}]" value="{{data.l_c}}">
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>{{data.pernyataan_d}}</th>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="style-radio" type="radio" name="m[{{data.id_soal}}]" value="{{data.m_d}}" >
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="style-radio" type="radio" name="l[{{data.id_soal}}]" value="{{data.l_d}}">
+                                            </div>
+                                        </th>
+                                    </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--Akhir Soal-->
+        <div class="container" style="max-width:fit-content">
+            <button type="submit" class="btn btn-primary d-flex justify-content-center mt-5 text-center">Simpan</button>
+        </div>
+        </form>
+
+
+    </section>
+    <!-- Akhir Jumbotron 1 -->
+
+{% endblock %}

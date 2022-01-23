@@ -1,0 +1,46 @@
+{% extends "admin/base.html" %} {% block title %} Data Soal | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 text-gray-800">Data Soal</h1>
+
+    <hr class="bg-primary">
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Tabel Data Soal</h6>
+        </div>
+        <div class="card-body">
+            </a>
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col">No. Soal</th>
+                                <th scope="col">Pernyataan A</th>
+                                <th scope="col">Pernyataan B</th>
+                                <th scope="col">Pernyataan C</th>
+                                <th scope="col">Pernyataan D</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in data %}
+                                <tr>
+                                    <th class="text-center" scope="row">{{loop.index0+1}}</th>
+                                    <td>{{data.pernyataan_a}}</td>
+                                    <td>{{data.pernyataan_b}}</td>
+                                    <td>{{data.pernyataan_c}}</td>
+                                    <td>{{data.pernyataan_d}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+.jumbotron {
+  padding: 5rem 1rem;
+  background-color: #e2edff;
+}
+
+.gambar_home {
+  width: 200px;
+}
+
+.logo_navbar {
+  width: 50px;
+}
+
+.copyright {
+  color: white;
+}
+
+.logo_besar {
+  width: 200px;
+}
+
+.logo_about {
+  width: 100px;
+}
+
+.logo_dominance {
+  width: 100px;
+}
+
+.logo_influence {
+  width: 100px;
+}
+
+.logo_steadiness {
+  width: 100px;
+}
+
+.btn-light {
+  color: blue;
+}
+
+.table_soal {
+  width: 600px;
+}
+
+.card_peraturan {
+  width: 1000px;
+}
+
+.table-contoh > tbody > tr > th {
+  vertical-align: middle;
+}
+
+.table-soal > tbody > tr > th {
+  vertical-align: middle;
+}
+
+.garis_vertikal {
+  border-left: 1px;
+  height: 200px;
+  width: 0px;
+}
+
+.style-radio {
+  width: 24px;
+  height: 24px;
+}
+
+.container-judul {
+  text-align: center;
+}
+
+.container-panduan {
+  text-align: center;
+}
+
+.card-identitas {
+  width: 900px;
+}

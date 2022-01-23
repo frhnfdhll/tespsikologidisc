@@ -1,0 +1,123 @@
+{% extends "auth/dasar.html" %} {% block title %} Register | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Registrasi</h1>
+                </div>
+
+                <form method="POST" action="" class="user">
+                  {{form.hidden_tag()}}
+                  <!-- Email -->
+                  <div class="form-group">
+                    {{form.email.label(class="form-control-label")}} {% if form.email.errors %} {{ form.email(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                      {% for error in form.email.errors %}
+                      <span>{{ error }}</span>
+                      {% endfor %}
+                    </div>
+                    {% else %} {{ form.email(class="form-control") }} {% endif %}
+                    <!-- <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Email" value="" /> -->
+                  </div>
+
+                  <!-- Username -->
+                  <div class="form-group">
+                    {{form.username.label(class="form-control-label")}} {% if form.username.errors %} {{ form.username(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                      {% for error in form.username.errors %}
+                      <span>{{ error }}</span>
+                      {% endfor %}
+                    </div>
+                    {% else %} {{ form.username(class="form-control") }} {% endif %}
+                    <!-- <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username" value="" /> -->
+                  </div>
+
+                  <!-- Fullname -->
+                  <div class="form-group">
+                    {{form.fullname.label(class="form-control-label")}} {% if form.fullname.errors %} {{ form.fullname(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                      {% for error in form.fullname.errors %}
+                      <span>{{ error }}</span>
+                      {% endfor %}
+                    </div>
+                    {% else %} {{ form.fullname(class="form-control") }} {% endif %}
+                    <!-- <input type="text" class="form-control form-control-user" id="fullname" name="fullname" placeholder="Fullname" value="" /> -->
+                  </div>
+
+                  <!-- Jenis Kelamin -->
+                  <div class="form-group">
+                    {{form.jeniskelamin.label(class="form-select-label")}} {% if form.jeniskelamin.errors %} {{ form.jeniskelamin(class="form-select is-invalid")}}
+                    <div class="invalid-feedback">
+                      {% for error in form.jeniskelamin.errors %}
+                      <span>{{ error }}</span>
+                      {% endfor %}
+                    </div>
+                    {% else %} {{ form.jeniskelamin(class="form-select") }} {% endif %}
+                  </div>
+
+                  <!-- Umur -->
+                  <div class="form-group">
+                    {{form.umur.label(class="form-control-label")}} {% if form.umur.errors %} {{ form.umur(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                      {% for error in form.umur.errors %}
+                      <span>{{ error }}</span>
+                      {% endfor %}
+                    </div>
+                    {% else %} {{ form.umur(class="form-control") }} {% endif %}
+                  </div>
+
+                  <!-- Password -->
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      {{form.password.label(class="form-control-label")}} {% if form.password.errors %} {{ form.password(class="form-control is-invalid")}}
+                      <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                      {% else %} {{ form.password(class="form-control") }} {% endif %}
+                      <!-- <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" autocomplete="off" /> -->
+                    </div>
+
+                    <!-- Repeat Password -->
+                    <div class="col-sm-6">
+                      {{form.confirm_password.label(class="form-control-label")}} {% if form.confirm_password.errors %} {{ form.confirm_password(class="form-control is-invalid")}}
+                      <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                      {% else %} {{ form.confirm_password(class="form-control") }} {% endif %}
+                      <!-- <input type="password" id="pass_confirm" name="pass_confirm" class="form-control form-control-user" placeholder="Konfirmasi Password" autocomplete="off" /> -->
+                    </div>
+                  </div>
+
+                  <!-- Button -->
+                  {{form.submit(class="btn btn-primary btn-user btn-block")}}
+                  <!-- <button type="submit" class="btn btn-primary btn-user btn-block">Register</button> -->
+                </form>
+
+                <hr />
+
+                <div class="text-center">
+                  <p>
+                    <a class="small" href="{{url_for('login')}}">Sudah memiliki akun ?</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

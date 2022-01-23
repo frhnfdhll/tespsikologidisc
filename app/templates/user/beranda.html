@@ -1,0 +1,33 @@
+{% extends "user/dasar.html" %} {% block title %} Beranda | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<!--Jumbotron 1-->
+<section class="jumbotron text-center">
+  <h1>TEMUKAN KEPRIBADIAN ANDA</h1>
+  <img src="{{ url_for('static', filename='img/Kepala otak.png') }}" class="gambar_home" alt="Gambar HOME" />
+  <p class="lead">Mulai Tes dan dapatkan gambaran kepribadian tentang anda serta pekerjaan yang cocok untuk anda.</p>
+  <a class="btn btn-primary btn-lg" href="/aturan" role="button" name="tombol_memulai">Memulai</a>
+</section>
+<!--Akhir Jumbotron 1-->
+
+<!-- Tentang -->
+<section class="tentang_home" id="Tentang">
+  <div class="container mb-3">
+    <div class="row justify-content-center align-items-center text-center">
+      <div class="col-4">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" class="logo_about" alt="logo_about" />
+      </div>
+      <div class="col-4">
+        <p class="text-uppercase fs-3">Apa itu DISC?</p>
+        <p class="lh-sm">Tes Psikologi DISC merupakan tes kepribadian diri untuk mengetahui kepribadian seseorang. Dapat mengetahui jenis-jenis pekerjaan yang cocok.</p>
+        <a class="btn btn-primary btn-sm" href="/tentang" role="button">Selengkapnya>></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Akhir Tentang -->
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+{% endblock %}

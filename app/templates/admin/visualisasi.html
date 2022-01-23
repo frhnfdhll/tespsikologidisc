@@ -1,0 +1,35 @@
+{% extends "admin/base.html" %} {% block title %} Visualisasi Decision Tree | Tes Psikologi DISC {% endblock %} {% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-3 text-gray-800">Tree</h1>
+
+  <hr class="bg-primary" />
+
+  <div class="container-fluid">
+    <img class="mb-3" src="{{ url_for('static', filename='/img/output.png') }}" width="1200px" height="100px" />
+    <div class="table-responsive">
+      <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr class="text-center">
+              <th scope="col">No</th>
+              <th scope="col">Aturan</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for data in data %}
+            <tr>
+              <th class="text-center" scope="row">{{loop.index0+1}}</th>
+              <th scope="row">{{data}}</th>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "admin/base.html" %} {% block title %} Data Hasil Tes | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 text-gray-800">Hasil Tes</h1>
+
+  <hr class="bg-primary" />
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Tabel Data Hasil Tes</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr class="text-center">
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Umur</th>
+                <th scope="col">Jenis Kelamin</th>
+                <th scope="col">D</th>
+                <th scope="col">I</th>
+                <th scope="col">S</th>
+                <th scope="col">C</th>
+                <th scope="col">Hasil Tes Kepribadian</th>
+                <th scope="col">Data Pekerjaan</th>
+                <th scope="col">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for hasil in hasil%}
+              <tr>
+                <th class="text-center" scope="row">{{loop.index0+1}}</th>
+                <td>{{hasil.nama.username}}</td>
+                <td>{{hasil.nama.umur}}</td>
+                <td>{{hasil.nama.jenis_kelamin}}</td>
+                <td>{{hasil.change_D}}</td>
+                <td>{{hasil.change_I}}</td>
+                <td>{{hasil.change_S}}</td>
+                <td>{{hasil.change_C}}</td>
+                <td>{{hasil.hasil_tipekepribadian}}</td>
+                <td>{{hasil.rekomendasi_pekerjaan}}</td>
+                <td class="text-center">
+                  <a href="{{url_for('admin_hasiltesinfo', hasil_id = hasil.id_hasil)}}" type="button" class="btn btn-sm btn-warning"><i class="fas fa-sm fa-info"></i></a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

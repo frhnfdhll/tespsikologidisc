@@ -1,0 +1,55 @@
+{% extends "user/dasar.html" %} {% block title %} Tentang | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<!-- Penjelasan DISC -->
+<section class="jumbotron text-center">
+  <h1>Dominance Influence Steadiness Compilence</h1>
+  <img src="{{ url_for('static', filename='/img/logo.png') }}" alt="Logo besar" class="logo_besar mt-3" />
+  <p class="lead mt-3">
+    Dominance Influence Steadiness Compilence (DISC) merupakan tes psikologi untuk mengetahui kepribadian seseorang. Berdasarkan tes ini, terdapat 4 faktor yang mempengaruhi kepribadian yaitu Dominance, Influence, Steadiness, Compilence.
+    Dari 4 faktor tersebut memiliki kepribadian yang berbeda-beda. Website ini menggunakan Algoritma Decision Tree sebagai penentu keputusan pekerjaan yang cocok berdasarkan dari analisa kepribadian DISC.
+  </p>
+</section>
+
+<!-- Tipe Kepribadian -->
+<section class="tipe_kepribadian">
+  <h2 class="text-center mt-2">Tipe-Tipe Kepribadian</h2>
+  <div class="container mt-3">
+    <div class="row justify-content-center border border-3 rounded-pill text-center mb-3">
+      <div class="col-4 mt-3 mb-3">
+        <img src="{{ url_for('static', filename='img/D.png') }}" alt="logo_dominance" class="logo_dominance rounded mx-auto d-block" />
+      </div>
+      <div class="col-4 mt-3 mb-3">
+        <p class="text-uppercase fs-3">DOMINANCE</p>
+        <p class="lh-sm">Memiliki tipe kepribadian yang tegas dan apa adanya.</p>
+      </div>
+    </div>
+    <div class="row justify-content-center border border-3 rounded-pill text-center mb-3">
+      <div class="col-4 mt-3 mb-3">
+        <p class="text-uppercase fs-3">INFLUENCE</p>
+        <p class="lh-sm">Memiliki tipe kepribadian yang mudah dan cepat dalam beradaptasi.</p>
+      </div>
+      <div class="col-4 mt-3 mb-3">
+        <img src="{{ url_for('static', filename='img/I.png') }}" alt="logo_influence" class="logo_influence rounded mx-auto d-block" />
+      </div>
+    </div>
+    <div class="row justify-content-center border border-3 rounded-pill text-center mb-3">
+      <div class="col-4 mt-3 mb-3">
+        <img src="{{ url_for('static', filename='img/S.png') }}" alt="logo_steadiness" class="logo_steadiness rounded mx-auto d-block" />
+      </div>
+      <div class="col-4 mt-3 mb-3">
+        <p class="text-uppercase fs-3">STEADINESS</p>
+        <p class="lh-sm">Memiliki tipe kepribadian yang lambat dibandingkan dengan tipe yang lainnya.</p>
+      </div>
+    </div>
+    <div class="row justify-content-center border border-3 rounded-pill text-center mb-3">
+      <div class="col-4 mt-3 mb-3">
+        <p class="text-uppercase fs-3">COMPILENCE</p>
+        <p class="lh-sm">Memiliki tipe kepribadian yang perfeksionis, sangat teliti, dan mementingkan keakuratan.</p>
+      </div>
+      <div class="col-4 mt-3 mb-3">
+        <img src="{{ url_for('static', filename='img/C.png') }}" alt="logo_steadiness" class="logo_steadiness rounded mx-auto d-block" />
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

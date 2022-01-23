@@ -1,0 +1,76 @@
+{% extends "user/dasar.html" %} {% block title %} Profil | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<section class="jumbotron">
+  <div class="container">
+    <h2>Hasil Tes Pengguna</h2>
+    <hr />
+    <div class="row">
+      <div class="col-12 col-md-12 col-lg-4">
+          <div class="panel widget shadow">
+              <div class="widget-header bg-primary">
+              </div>
+              <div class="widget-body text-center">
+                  <img alt="Profile Picture" style="max-width: 100px;" src="{{image_file}}">
+                  <h5 class="mar-no mt-3">
+                      <span>{{current_user.fullname}}</span>
+                  </h5>
+                  <p>
+                    <h5>
+                      <span class="badge badge-info"><i class="fas fa-fw fa-id-card mr-2"></i><span>{{current_user.roles}}</span></span>
+                    </h5>
+                  </p>
+                  <div class="form-group row">
+                    <span class="form-text">Terdaftar pada {{current_user.created_at}}</span>
+                  </div>
+                  <hr>
+              </div>
+          </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-8">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Hasil Tes</h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr class="text-center">
+                        <th scope="col">No</th>
+                        <th scope="col">D</th>
+                        <th scope="col">I</th>
+                        <th scope="col">S</th>
+                        <th scope="col">C</th>
+                        <th scope="col">Tanggal Pengerjaan</th>
+                        <th scope="col">Hasil Tes Kepribadian</th>
+                        <th scope="col">Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for hasil in hasil %}
+                      <tr>
+                        <th class="text-center" scope="row">{{loop.index0+1}}</th>
+                        <td>{{hasil.change_D}}</td>
+                        <td>{{hasil.change_I}}</td>
+                        <td>{{hasil.change_S}}</td>
+                        <td>{{hasil.change_C}}</td>
+                        <td>{{hasil.date_submit.strftime('%d-%m-%Y %H:%M:%S')}}</td>
+                        <td class="text-uppercase">{{hasil.hasil_tipekepribadian}}</td>
+                        <td class="text-center">
+                          <a href="{{url_for('profil_infohasil', id_hasil = hasil.id_hasil)}}" type="button" class="btn btn-sm btn-warning"><i class="fas fa-sm fa-info"></i></a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

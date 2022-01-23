@@ -1,0 +1,225 @@
+{% extends "user/dasar.html" %} {% block title %} Hasil Tes | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<!-- Jumbotron 1 -->
+<section class="jumbotron text-black">
+  <!-- Header -->
+  <div class="container">
+    <h3>Ringkasan Hasil Tes Psikologi DISC</h3>
+    <p>
+      Berikut merupakan ringkasan yang menunjukan hasil dari yang telah dilakukan. Grafik III adalah hasil dari kombinasi pilihan "Most" dengan pilihan "Least" dan digunakan untuk menentukan tipe kepribadian DISC yang tertinggi, skor indeks
+      intensitas dan pekerjaan yang cocok untuk anda.
+    </p>
+  </div>
+
+  <div class="container d-flex justify-content-center">
+    <hr class="bg-primary" width="1200px" />
+  </div>
+
+  <!-- Data Diri -->
+  <div class="container d-flex justify-content-center">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col" class="col-lg-4">Nama</th>
+          <th scope="col" class="col-lg-4">Umur</th>
+          <th scope="col" class="col-lg-4">Jenis Kelamin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ current_user.fullname }}</td>
+          <td>{{ current_user.umur }} Tahun</td>
+          <td>{{ current_user.jenis_kelamin }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container d-flex justify-content-center">
+    <hr class="bg-primary" width="1200px" />
+  </div>
+
+  <!-- Hasil Tipe Kepribadian -->
+  <div class="container">
+    <div class="card">
+      <div class="card-header bg-primary text-white text-center">Tipe Kepribadian</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-center"><span class="text-uppercase fw-bolder">{{hasil_tipekepribadian}}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container d-flex justify-content-center">
+    <hr class="bg-primary" width="1200px" />
+  </div>
+
+  <!-- Tabel Skor DISC -->
+  <div class="container d-flex justify-content-center">
+    <div class="row">
+      <div class="col">
+        <table class="table table-bordered bg-primary text-white" style="max-width: 500px">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">D</th>
+              <th scope="col">I</th>
+              <th scope="col">S</th>
+              <th scope="col">C</th>
+              <th scope="col">#</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Tabel Most -->
+            <tr>
+              <th>Paling</th>
+              <!-- Most D -->
+              <td>{{m_hasil[0]}}</td>
+              <!-- Most I -->
+              <td>{{m_hasil[1]}}</td>
+              <!-- Most S -->
+              <td>{{m_hasil[2]}}</td>
+              <!-- Most C -->
+              <td>{{m_hasil[3]}}</td>
+              <!-- Most # -->
+              <td>{{m_hasil[4]}}</td>
+              <!-- Most Total -->
+              <td>{{m_hasil[5]}}</td>
+            </tr>
+
+            <!-- Tabel Least -->
+            <tr>
+              <th>Kurang</th>
+              <!-- least D -->
+              <td>{{l_hasil[0]}}</td>
+              <!-- least I -->
+              <td>{{l_hasil[1]}}</td>
+              <!-- least S -->
+              <td>{{l_hasil[2]}}</td>
+              <!-- least C -->
+              <td>{{l_hasil[3]}}</td>
+              <!-- least # -->
+              <td>{{l_hasil[4]}}</td>
+              <!-- Least Total -->
+              <td>{{l_hasil[5]}}</td>
+            </tr>
+
+            <!-- Tabel Change -->
+            <tr>
+              <th>Selisih</th>
+              <!-- Change D -->
+              <td>{{c_hasil[0]}}</td>
+              <!-- Change I -->
+              <td>{{c_hasil[1]}}</td>
+              <!-- Change S -->
+              <td>{{c_hasil[2]}}</td>
+              <!-- Change C -->
+              <td>{{c_hasil[3]}}</td>
+              <td class="bg-dark"></td>
+              <td class="bg-dark"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-flex justify-content-center">
+    <hr class="bg-primary" width="1200px" />
+  </div>
+
+  <!-- Grafik -->
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Grafik 1 | Luaran, Diri Publik</h6>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">{% from "charts/_line_chart.html" import render_line_chart %} {{ render_line_chart(most_chart) }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Grafik 2 | Dalam, Diri Pribadi</h6>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">{% from "charts/_line_chart.html" import render_line_chart %} {{ render_line_chart(least_chart) }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Grafik 3 | Cermin, Persepsi Diri</h6>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">{% from "charts/_line_chart.html" import render_line_chart %} {{ render_line_chart(change_chart) }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="card col-sm-12 col-md-12 col-lg-3">
+            <div class="card-header bg-primary text-white text-center">Ciri Umum</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center"><span class="fw-normal">{{deskripsi[1]}}</span></li>
+            </ul>
+          </div>
+          <div class="card col-sm-12 col-md-12 col-lg-3">
+            <div class="card-header bg-primary text-white text-center">Nilai dalam Team</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center"><span class="fw-normal">{{deskripsi[2]}}</span></li>
+            </ul>
+          </div>
+          <div class="card col-sm-12 col-md-12 col-lg-3">
+            <div class="card-header bg-primary text-white text-center">Kemungkinan Kelemahan</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center"><span class="fw-normal"></span>{{deskripsi[3]}}</li>
+            </ul>
+          </div>
+          <div class="card col-sm-12 col-md-12 col-lg-3">
+            <div class="card-header bg-primary text-white text-center">Ketakutan Terbesar</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center"><span class="fw-normal"></span>{{deskripsi[4]}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container d-flex justify-content-center">
+        <hr class="bg-primary" width="1200px" />
+      </div>
+
+      <div class="container">
+        <h5>Deskripsi :</h5>
+        <h6>{{deskripsi[0]}}</h6>
+      </div>
+
+      <div class="container d-flex justify-content-center">
+        <hr class="bg-primary" width="1200px" />
+      </div>
+
+      <div class="container">
+        <h5>Rekomendasi Pekerjaan :</h5>
+        <h6>{{hasil_klasifikasi}}</h6>
+      </div>
+
+      <div class="container d-flex justify-content-center">
+        <hr class="bg-primary" width="1200px" />
+      </div>
+
+      <div class="container d-flex justify-content-center">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSclLADQGGUEaYoYXQkQXIjXC7UsGrRF9BBWeNqWi0uqCdjvdg/viewform?usp=sf_link" class="btn btn-primary">Isi Kuesioner</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Akhir Jumbotron 1 -->
+
+{% endblock %}

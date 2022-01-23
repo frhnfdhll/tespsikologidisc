@@ -1,0 +1,19 @@
+{% extends "admin/base.html" %} {% block title %} Data Akurasi | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 text-gray-800">Data Akurasi Dataset</h1>
+
+  <hr class="bg-primary" />
+
+  <div class="container text-center">
+    <div class="card mb-3" style="width: 18rem">
+      <div class="card-header bg-primary text-white">Akurasi</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{data}}</li>
+      </ul>
+    </div>
+  </div>
+
+  {% endblock %}
+</div>

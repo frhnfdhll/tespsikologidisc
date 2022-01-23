@@ -1,0 +1,168 @@
+{% extends "admin/base.html" %} {% block title %} Data User | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 text-gray-800">Data User</h1>
+
+  <hr class="bg-primary" />
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Data Detail User</h6>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-4">
+                <div class="panel widget shadow">
+                    <div class="widget-header bg-primary">
+                    </div>
+                    <div class="widget-body text-center">
+                      <hr>
+                        <img alt="Profile Picture" style="max-width: 100px;" src="{{ image_file }}">
+                        <h5 class="mar-no mt-3">
+                            <span>{{user.fullname}}</span>
+                        </h5>
+                        <p>
+                          <h5>
+                            <span class="badge badge-info"><i class="fas fa-fw fa-id-card mr-2"></i><span>{{user.roles}}</span></span>
+                          </h5>
+                        </p>
+                          <span class="form-text">Terdaftar pada {{user.created_at}}</span>
+                        <hr>
+                        <div class="pad-ver">
+                          <a class="btn btn-user btn-danger mb-3" href="" data-toggle="modal" data-target="#modalhapususer">
+                            <i class="fas fa-trash mr-2"></i>
+                            Hapus User
+                          </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-8">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Profil Lengkap</h6>
+                  </div>
+                  <div class="card-body">
+                    <form method="POST" action="{{url_for('admin_edituser', user_id=user.id)}}" class="user">
+
+                      <div class="form-group">
+                        {{form.fullname.label(class="col-sm-3 col-form-label font-weight-bold")}} 
+                        {% if form.fullname.errors %} 
+                          {{ form.fullname(class="form-control is-invalid")}}
+                          <div class="invalid-feedback">
+                            {% for error in form.fullname.errors %}
+                            <span>{{ error }}</span>
+                              {% endfor %}
+                            </div>
+                        {% else %}
+                          {{ form.fullname(class="form-control col-sm-9") }}
+                        {% endif %}
+                      </div>
+                      <div class="form-group">
+                        {{form.username.label(class="col-sm-3 col-form-label font-weight-bold")}} 
+                        {% if form.username.errors %} 
+                          {{ form.username(class="form-control is-invalid")}}
+                          <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                              {% endfor %}
+                            </div>
+                        {% else %}
+                          {{ form.username(class="form-control col-sm-9") }}
+                        {% endif %}
+                        <!-- <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username" value="" /> -->
+                      </div>
+                      <div class="form-group">
+                        {{form.email.label(class="col-sm-3 col-form-label font-weight-bold")}} 
+                        {% if form.email.errors %} 
+                          {{ form.email(class="form-control is-invalid")}}
+                          <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                              {% endfor %}
+                            </div>
+                        {% else %}
+                          {{ form.email(class="form-control col-sm-9") }}
+                        {% endif %}
+                        <!-- <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="email" value="" /> -->
+                      </div>
+                      <div class="form-group">
+                        {{form.roles.label(class="col-sm-3 col-form-label font-weight-bold")}} 
+                        {% if form.roles.errors %} 
+                          {{ form.roles(class="form-control is-invalid")}}
+                          <div class="invalid-feedback">
+                            {% for error in form.roles.errors %}
+                            <span>{{ error }}</span>
+                              {% endfor %}
+                            </div>
+                        {% else %}
+                          {{ form.roles(class="form-control form-select col-sm-9") }}
+                        {% endif %}
+                        <!-- <input type="text" class="form-control form-control-user" id="roles" name="roles" placeholder="roles" value="" /> -->
+                      </div>
+                      <div class="form-group">
+                        {{form.jeniskelamin.label(class="col-sm-3 col-form-label font-weight-bold")}} 
+                        {% if form.jeniskelamin.errors %} 
+                          {{ form.jeniskelamin(class="form-control is-invalid")}}
+                          <div class="invalid-feedback">
+                            {% for error in form.jeniskelamin.errors %}
+                            <span>{{ error }}</span>
+                              {% endfor %}
+                            </div>
+                        {% else %}
+                          {{ form.jeniskelamin(class="form-control col-sm-9") }}
+                        {% endif %}
+                        <!-- <input type="text" class="form-control form-control-user" id="jeniskelamin" name="jeniskelamin" placeholder="jeniskelamin" value="" /> -->
+                      </div>
+                      <div class="form-group">
+                        {{form.umur.label(class="col-sm-3 col-form-label font-weight-bold")}} 
+                        {% if form.umur.errors %} 
+                          {{ form.umur(class="form-control is-invalid")}}
+                          <div class="invalid-feedback">
+                            {% for error in form.umur.errors %}
+                            <span>{{ error }}</span>
+                              {% endfor %}
+                            </div>
+                        {% else %}
+                          {{ form.umur(class="form-control col-sm-9") }}
+                        {% endif %}
+                        <!-- <input type="text" class="form-control form-control-user" id="umur" name="umur" placeholder="umur" value="" /> -->
+                      </div>
+                      
+                      <hr>
+                      <div class="form-group">
+                        {{ form.submit(class="btn btn-warning") }}
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalhapususer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h5 class="modal-title text-white" id="exampleModalLabel">Hapus Data</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span class="text-white" aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Apakah anda yakin akan menghapus data {{user.fullname}} ?
+        </div>
+        <div class="modal-footer">
+            <form action="{{url_for('admin_hapususer', user_id=user.id)}}" method="POST">
+                <input class="btn btn-danger" type="submit" value="Delete">
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

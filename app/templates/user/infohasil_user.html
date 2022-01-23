@@ -1,0 +1,150 @@
+{% extends "user/dasar.html" %} {% block title %} Data User | Tes Psikologi DISC {% endblock %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 text-gray-800">Data User</h1>
+
+  <hr class="bg-primary" />
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Data Detail Hasil Pengerjaan</h6>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-4">
+                <div class="panel widget shadow">
+                    <div class="widget-header bg-primary">
+                    </div>
+                    <div class="widget-body text-center">
+                        <img alt="Profile Picture" style="max-width: 100px;" src="{{ image_file }}">
+                        <h5 class="mar-no mt-3">
+                            <span>{{hasil.nama.fullname}}</span>
+                        </h5>
+                        <p>
+                          <h5>
+                            <span class="badge badge-info"><i class="fas fa-fw fa-id-card mr-2"></i><span>{{hasil.nama.roles}}</span></span>
+                          </h5>
+                        </p>
+                          <span class="form-text">Terdaftar pada {{hasil.nama.created_at}}</span>
+                        <hr>
+                        <div class="pad-ver">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-8">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Hasil Tes Psikologi DISC</h6>
+                  </div>
+                  <div class="card-body">
+                    <p class="fs-6">Waktu Pengerjaan : {{hasil.date_submit.strftime('%d-%m-%Y %H:%M:%S')}}</p>
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white text-center">Tipe Kepribadian</div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item text-center"><span class="text-uppercase fw-bolder">{{hasil.hasil_tipekepribadian}}</span></li>
+                        </ul>
+                      </div>
+                    <table class="table table-bordered bg-primary text-white text-center" style="max-width: 500px">
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col">D</th>
+                            <th scope="col">I</th>
+                            <th scope="col">S</th>
+                            <th scope="col">C</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Tabel Most -->
+                          <tr>
+                            <th>Paling</th>
+                            <!-- Most D -->
+                            <td>{{hasil.most_D}}</td>
+                            <!-- Most I -->
+                            <td>{{hasil.most_I}}</td>
+                            <!-- Most S -->
+                            <td>{{hasil.most_S}}</td>
+                            <!-- Most C -->
+                            <td>{{hasil.most_C}}</td>
+                            <!-- Most # -->
+                            <td>{{24 - (hasil.most_D + hasil.most_I + hasil.most_S + hasil.most_C)}}</td>
+                            <!-- Most Total -->
+                            <td>{{hasil.most_D + hasil.most_I + hasil.most_S + hasil.most_C + (24 - (hasil.most_D + hasil.most_I + hasil.most_S + hasil.most_C)) }}</td>
+                          </tr>
+              
+                          <!-- Tabel Least -->
+                          <tr>
+                            <th>Kurang</th>
+                            <!-- least D -->
+                            <td>{{hasil.least_D}}</td>
+                            <!-- least I -->
+                            <td>{{hasil.least_I}}</td>
+                            <!-- least S -->
+                            <td>{{hasil.least_S}}</td>
+                            <!-- least C -->
+                            <td>{{hasil.least_C}}</td>
+                            <!-- least # -->
+                            <td>{{24 - (hasil.least_D+hasil.least_I+hasil.least_S+hasil.least_C)}}</td>
+                            <!-- Least Total -->
+                            <td>{{hasil.least_D+hasil.least_I+hasil.least_S+hasil.least_C+(24 - (hasil.least_D+hasil.least_I+hasil.least_S+hasil.least_C))}}</td>
+                          </tr>
+              
+                          <!-- Tabel Change -->
+                          <tr>
+                            <th>Selisih</th>
+                            <!-- Change D -->
+                            <td>{{hasil.change_D}}</td>
+                            <!-- Change I -->
+                            <td>{{hasil.change_I}}</td>
+                            <!-- Change S -->
+                            <td>{{hasil.change_S}}</td>
+                            <!-- Change C -->
+                            <td>{{hasil.change_C}}</td>
+                            <td class="bg-dark"></td>
+                            <td class="bg-dark"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <hr>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col">
+                            <p>Ciri Umum :</p>
+                            <h6>{{hasil_deskripsi[1]}}</h6>
+                          </div>
+                          <div class="col">
+                            <p>Nilai dalam Team :</p>
+                            <h6>{{hasil_deskripsi[2]}}</h6>
+                          </div>
+                          <div class="col">
+                            <p>Kemungkinan Kelemahan :</p>
+                            <h6>{{hasil_deskripsi[3]}}</h6>
+                          </div>
+                          <div class="col">
+                            <p>Ketakutan Terbesar :</p>
+                            <h6>{{hasil_deskripsi[4]}}</h6>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <p>Deskripsi :</p>
+                        <h6>{{hasil_deskripsi[0]}}</h6>
+                      </div>
+                      <hr>
+                      <div class="container">
+                        <p>Rekomendasi Pekerjaan :</p>
+                        <h6>{{hasil.rekomendasi_pekerjaan}}</h6>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

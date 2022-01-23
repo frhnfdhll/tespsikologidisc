@@ -1,0 +1,107 @@
+{% macro render_line_chart(_CHART_) -%}
+
+<canvas id="lineChart_{{ _CHART_.name }}" class="chartjs-render-monitor"></canvas>
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+
+      var Data = {
+        labels  : {{ _CHART_.labels|tojson|safe }},
+        datasets: {{ _CHART_.datasets|tojson|safe }}
+      }
+
+      var Options = {{ _CHART_.options|tojson|safe if _CHART_.options else '{}'}};
+      var defaultOptions = {
+        maintainAspectRatio: false,
+        layout: {
+            padding: {
+                left: 10,
+                right: 25,
+                top: 25,
+                bottom: 0,
+            },
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [
+                {
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
+                    ticks: {
+                        maxTicksLimit: 4,
+                    },
+                },
+            ],
+            yAxes: [
+                {
+                  ticks: {
+                      // maxTicksLimit: 5,
+                      min:-8,
+                      max:8,
+                      padding: 10
+                      // callback: function (value) {
+                      //   return number_format(value);
+                      // },
+                  },
+                  gridLines: {
+                      color: 'rgb(234, 236, 244)',
+                      zeroLineColor: 'rgb(234, 236, 244)',
+                      drawBorder: false,
+                      borderDash: [2],
+                      zeroLineBorderDash: [2],
+                  },
+                },
+            ],
+            tooltips: {
+                backgroundColor: 'rgb(255,255,255)',
+                bodyFontColor: '#858796',
+                titleMarginBottom: 10,
+                titleFontColor: '#6e707e',
+                titleFontSize: 14,
+                borderColor: '#dddfeb',
+                borderWidth: 1,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                intersect: false,
+                mode: 'index',
+                caretPadding: 10,
+                // callbacks: {
+                //   label: function (tooltipItem, chart) {
+                //     var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                //     return datasetLabel + ':' + number_format(tooltipItem.yLabel);
+                //   },
+                // },
+            },
+        }
+      }
+
+      if (Object.keys(Options).length === 0){
+          Options = defaultOptions;
+          console.log('[INFO] Using default options!')
+      }
+
+      var ctx = $('#lineChart_{{ _CHART_.name|safe}}').get(0).getContext('2d');
+      for (var i = 0; i < Data.datasets.length; i++){
+        Data.datasets[i].fill = false;
+      }
+
+      Options.datasetFill = false;
+
+      (Chart.defaults.global.defaultFontFamily = 'Nunito'), '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+      Chart.defaults.global.defaultFontColor = '#858796';
+
+      var LineChart = new Chart(ctx, {
+        type: 'line',
+        data: Data,
+        options: Options
+      })
+
+  })
+</script>
+{%- endmacro %}

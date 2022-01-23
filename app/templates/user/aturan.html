@@ -1,0 +1,68 @@
+{% extends "user/dasar.html" %} {% block title %} Aturan Pengerjaan | Tes Psikologi DISC {% endblock %} {% block content %}
+<!-- Jumbotron 1 -->
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="display-4">Tes Kepribadian DISC</h1>
+    <p class="lh-sm mb-5">Cari tahu tipe kepribadianmu berdasarkan 4 tipe kepribadian DISC</p>
+  </div>
+
+  <!-- Card Peraturan -->
+  <div class="container mb-3 text-dark">
+    <div class="d-flex justify-content-center">
+      <div class="card card_peraturan">
+        <div class="card-header">
+          <h4>Aturan Pengerjaan</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text border">Soal terdiri dari 24 soal</p>
+          <p class="card-text border">Setiap soal memuat 4 pernyataan</p>
+          <p class="card-text border">Pada tes ini tidak ada jawaban BENAR atau SALAH, maka jawablah sesuai dengan diri sendiri.</p>
+          <p class="card-text border">
+            Jika anda merasa bahwa dari masing pernyataan tersebut sama-sama mencerminkan diri anda, maka anda diharuskan tetap memilih satu pernyataan yang paling menggambarkan diri anda dan satu yang paling tidak menggambarkan diri anda.
+            Begitu pula sebaliknya, jika anda merasa bahwa dari masing-masing pernyataan tersebut sama-sama tidak mencerminkan diri anda, anda tetap harus memilih satu pernyataan yang paling mendekati diri anda.
+          </p>
+          <p class="card-text border">Pilihlah salah satu pernyataan pada huruf (M) pernyataaan yang PALING menggambarkan diri anda</p>
+          <p class="card-text border">Pilihlah salah satu pernyataan pada huruf (L) pernyataaan yang TIDAK PALING menggambarkan diri anda</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Contoh Pengerjaan -->
+  <!-- <div class="container text-dark">
+    <div class="d-flex justify-content-center">
+      <div class="card card_pengerjaan">
+        <div class="card-header">
+          <h4>Contoh Pengerjaan</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <img src="{{ url_for('static', filename='img/contoh_pengerjaan_benar.png') }}" width="500" />
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <img src="{{ url_for('static', filename='img/contoh_pengerjaan_salah.png') }}" width="500" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <i class="fas fa-check mr-2"></i>
+              BENAR
+            </div>
+            <div class="col">
+              <i class="fas fa-times mr-2"></i>
+              SALAH
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Tombol Mulai -->
+  <div class="d-flex justify-content-center">
+    <a class="btn btn-primary btn-lg mt-5 mb-5" href="{{url_for('lamantes')}}" role="button">Mulai</a>
+  </div>
+</section>
+<!-- Akhir Jumbotron 1 -->
+{% endblock %}
